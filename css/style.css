@@ -174,14 +174,14 @@ header ul li:hover a::after{
 .secondary-header ul li.current a{
       color:#648eac;
 }
-.secondary-header ul li a::after{
+.secondary-header ul li::after{
       content:"";
       height:2px;
       background:#648eac;
       width:0;
       display:block;
 }
-.secondary-header ul li:hover a::after{
+.secondary-header ul li:hover::after{
       width:100%;
       transition: all 1s ease;
       -webkit-transition: all 1s ease;
@@ -189,7 +189,14 @@ header ul li:hover a::after{
       -ms-transition: all 1s ease;
       -o-transition: all 1s ease;
 }
-
+.main-nav li.current::after{
+      width:100%;
+      transition: all 1s ease;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      -o-transition: all 1s ease
+}
 .navTrigger{
       cursor: pointer;
       width:30px;

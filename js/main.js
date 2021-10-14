@@ -112,7 +112,7 @@ accordions.forEach((touch)=>{
 });
 
 function moveClass(){
-    let menuLinks= document.querySelector(".secondary-header nav ul li");
+    let menuLinks= document.querySelectorAll(".main-nav li");
     
     for(let i = 0; i < menuLinks.length; i++){
         menuLinks[i].onclick = function(){
@@ -120,13 +120,60 @@ function moveClass(){
             prevActive !== null && prevActive.classList.remove("current");
  
             this.classList.add("current");
+
         }
     
     }
  }
  moveClass();
 
+ window.addEventListener("scroll",function(){
+    let sections = ['home','about','services','resources','faqs','contact'];
 
+    let scrollBarLocation = window.scrollY;
+    let list = document.querySelectorAll(".main-nav li");
+    
+    let about= document.getElementById(sections[1]).offsetTop - 200;
+    let services = document.getElementById(sections[2]).offsetTop - 200;
+    let resources= document.getElementById(sections[3]).offsetTop - 200;
+    let faqs = document.getElementById(sections[4]).offsetTop - 200;
+    let contact = document.getElementById(sections[5]).offsetTop - 200;
+
+    for(let i = 0; i < list.length; i++){
+       if(scrollBarLocation < about){
+           list[0].classList.add("current");
+       }else{
+           list[0].classList.remove("current");
+       }
+       if(scrollBarLocation > about && scrollBarLocation <= services){
+           list[1].classList.add("current");
+       }
+       else{
+           list[1].classList.remove("current");
+       }
+       if(scrollBarLocation > services && scrollBarLocation <= resources){
+           list[2].classList.add("current");
+       }else{
+           list[2].classList.remove("current");
+       }
+       if(scrollBarLocation > resources && scrollBarLocation < faqs){
+           list[3].classList.add("current");
+       }else{
+           list[3].classList.remove("current");
+       }
+       if(scrollBarLocation > faqs && scrollBarLocation < contact){
+        list[4].classList.add("current");
+       }else{
+        list[4].classList.remove("current");
+       }   
+       if(scrollBarLocation > contact){
+           list[5].classList.add("current");
+       }else{
+           list[5].classList.remove("current");
+       }
+    }
+    
+   });
 //small jquery for scrolling
 $(document).ready(function(){
     $('a').on("click", function(e){
